@@ -4,6 +4,7 @@
 */
 let deleteProductId;
 let products = [];
+let apiUrl = 'http://localhost:4000/api/products';
 
 const getIdFromUrl = () => {
     let url = location.href;
@@ -14,12 +15,12 @@ const getIdFromUrl = () => {
 
 // load all Products
 const loadProducts = () => {
-    fetch('http://localhost:4000/api/products', {
+    fetch(apiUrl, {
         method: "GET"
     })
         .then((response) => response.json())
         .then((data) => {
-            products = data;
+            products = data; // assign response data to products array
             displayProducts();
         });
 }
@@ -79,6 +80,19 @@ const addProduct = () => {
 const addProductInDb = (product) => {
     console.log(product);
     // Call POST API "http://localhost:4000/api/products/" and send product
+
+    fetch(apiUrl, {
+        method: 'POST',
+        body: JSON.stringify(product),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    })
+        .then((response) => response.json())
+        .then(() => {
+            alert(`Product Created Successfully`);
+            window.location.href = "./ProductList.html"; // redirect to products page
+        });
 }
 
 // Display Products in the table
@@ -102,5 +116,3 @@ const displayProducts = () => {
         tbody.appendChild(row);
     });
 }
-
-loadProducts();
