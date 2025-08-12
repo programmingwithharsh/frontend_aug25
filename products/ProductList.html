@@ -27,65 +27,7 @@
                 </tr>
             </thead>
             <tbody>
-                <script>
-                    let products = [
-                        {
-                            "_id": "689ac3737add67f65904836d",
-                            "productName": "iPhone",
-                            "productCode": "555",
-                            "releaseDate": "15 Sep",
-                            "description": "Apple",
-                            "price": "88",
-                            "startRating": "5",
-                            "imageUrl": "https://m.media-amazon.com/images/I/61135j8fPJL._AC_UY218_.jpg",
-                            "createdAt": "2025-08-12T04:30:43.320Z",
-                            "updatedAt": "2025-08-12T04:30:43.320Z",
-                            "__v": 0
-                        },
-                        {
-                            "_id": "689ac3937add67f65904836f",
-                            "productName": "Samsung",
-                            "productCode": "555",
-                            "releaseDate": "15 Sep",
-                            "description": "Apple",
-                            "price": "9090",
-                            "startRating": "5",
-                            "imageUrl": "https://m.media-amazon.com/images/I/61FcXMhjr8L._AC_UY218_.jpg",
-                            "createdAt": "2025-08-12T04:31:15.443Z",
-                            "updatedAt": "2025-08-12T04:31:15.443Z",
-                            "__v": 0
-                        },
-                        {
-                            "_id": "689ac3b17add67f659048371",
-                            "productName": "Nokia",
-                            "productCode": "555",
-                            "releaseDate": "15 Sep",
-                            "description": "Nokia",
-                            "price": "90",
-                            "startRating": "5",
-                            "imageUrl": "https://m.media-amazon.com/images/I/51GSe9rxsoL._AC_UY218_.jpg",
-                            "createdAt": "2025-08-12T04:31:45.132Z",
-                            "updatedAt": "2025-08-12T04:31:45.132Z",
-                            "__v": 0
-                        }
-                    ]
-
-                    let tableContent = "";
-                    for (let index = 0; index < products.length; index++) {
-                        tableContent = `<tr>
-                                    <td><img width=50 height=80 src="${products[index].imageUrl}"/></td>
-                                    <td>${products[index].productName}</td>
-                                    <td>${products[index].productCode}</td>
-                                    <td>${products[index].releaseDate}</td>
-                                    <td>${products[index].description}</td>
-                                    <td>${products[index].price}</td>
-                                    <td>${products[index].startRating}</td>
-                                    <td><a href="./EditProduct.html?${products[index]._id}">Edit</a>|<a data-bs-toggle="modal" onClick="storeDeleteId('${products[index]._id}')" data-bs-target="#deleteModal" href="">Delete</a></td>
-                                </tr>`;
-                        document.write(tableContent);
-                    }
-                </script>
-
+                <!-- Products will be loaded dynamically via javascript-->
             </tbody>
         </table>
         <a class="btn btn-primary" href="./AddProduct.html">Add Product</a>

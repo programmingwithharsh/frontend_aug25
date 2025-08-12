@@ -3,6 +3,7 @@
     And update products variable
 */
 let deleteProductId;
+let products = [];
 
 const getIdFromUrl = () => {
     let url = location.href;
@@ -13,6 +14,14 @@ const getIdFromUrl = () => {
 
 // load all Products
 const loadProducts = () => {
+    fetch('http://localhost:4000/api/products', {
+        method: "GET"
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            products = data;
+            displayProducts();
+        });
 }
 
 /*
@@ -71,3 +80,27 @@ const addProductInDb = (product) => {
     console.log(product);
     // Call POST API "http://localhost:4000/api/products/" and send product
 }
+
+// Display Products in the table
+const displayProducts = () => {
+    const tbody = document.querySelector('tbody');
+    tbody.innerHTML = "";
+
+    products.forEach(product => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+        <td><img width=50 height=80 src="${product.imageUrl}"/></td>
+        <td>${product.productName}</td>
+        <td>${product.productCode}</td>
+        <td>${product.releaseDate}</td>
+        <td>${product.description}</td>
+        <td>${product.price}</td>
+        <td>${product.startRating}</td>
+        <td><a href="./EditProduct.html?${product._id}">Edit</a>|
+            <a data-bs-toggle="modal" onClick="storeDeleteId('${product._id}')" data-bs-target="#deleteModal" href="">Delete</a>
+        </td>`
+        tbody.appendChild(row);
+    });
+}
+
+loadProducts();
