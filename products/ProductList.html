@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.js"></script>
+    <script src="./script.js"></script>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h1>Products page</h1>
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Product Name</th>
+                    <th>Product Code</th>
+                    <th>Release Date</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Rating</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <script>
+                    let products = [
+                        {
+                            "_id": "689ac3737add67f65904836d",
+                            "productName": "iPhone",
+                            "productCode": "555",
+                            "releaseDate": "15 Sep",
+                            "description": "Apple",
+                            "price": "88",
+                            "startRating": "5",
+                            "imageUrl": "https://m.media-amazon.com/images/I/61135j8fPJL._AC_UY218_.jpg",
+                            "createdAt": "2025-08-12T04:30:43.320Z",
+                            "updatedAt": "2025-08-12T04:30:43.320Z",
+                            "__v": 0
+                        },
+                        {
+                            "_id": "689ac3937add67f65904836f",
+                            "productName": "Samsung",
+                            "productCode": "555",
+                            "releaseDate": "15 Sep",
+                            "description": "Apple",
+                            "price": "9090",
+                            "startRating": "5",
+                            "imageUrl": "https://m.media-amazon.com/images/I/61FcXMhjr8L._AC_UY218_.jpg",
+                            "createdAt": "2025-08-12T04:31:15.443Z",
+                            "updatedAt": "2025-08-12T04:31:15.443Z",
+                            "__v": 0
+                        },
+                        {
+                            "_id": "689ac3b17add67f659048371",
+                            "productName": "Nokia",
+                            "productCode": "555",
+                            "releaseDate": "15 Sep",
+                            "description": "Nokia",
+                            "price": "90",
+                            "startRating": "5",
+                            "imageUrl": "https://m.media-amazon.com/images/I/51GSe9rxsoL._AC_UY218_.jpg",
+                            "createdAt": "2025-08-12T04:31:45.132Z",
+                            "updatedAt": "2025-08-12T04:31:45.132Z",
+                            "__v": 0
+                        }
+                    ]
+
+                    let tableContent = "";
+                    for (let index = 0; index < products.length; index++) {
+                        tableContent = `<tr>
+                                    <td><img width=50 height=80 src="${products[index].imageUrl}"/></td>
+                                    <td>${products[index].productName}</td>
+                                    <td>${products[index].productCode}</td>
+                                    <td>${products[index].releaseDate}</td>
+                                    <td>${products[index].description}</td>
+                                    <td>${products[index].price}</td>
+                                    <td>${products[index].startRating}</td>
+                                    <td><a href="./EditProduct.html?${products[index]._id}">Edit</a>|<a data-bs-toggle="modal" onClick="storeDeleteId('${products[index]._id}')" data-bs-target="#deleteModal" href="">Delete</a></td>
+                                </tr>`;
+                        document.write(tableContent);
+                    }
+                </script>
+
+            </tbody>
+        </table>
+        <a class="btn btn-primary" href="./AddProduct.html">Add Product</a>
+
+        <!-- Modal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="deleteModalLabel">Delete Product</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onclick="deleteProduct()">OK</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.css" rel="stylesheet">
+    <script src="./script.js"></script>
+    <script>
+        console.log(getIdFromUrl());
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xxl-6 mt-4">
+                <h1>Edit Product</h1>
+                <form action="./ProductList.html" method="get" onsubmit="return updateProduct()">
+                    Product Name: <input class="form-control" type="text" name="productName" value="Apple"
+                        placeholder="Enter Product Name">
+                    Product Code: <input class="form-control" type="text" name="productCode" value="100"
+                        placeholder="Enter Product Code">
+                    Date: <input class="form-control" type="date" name="releaseDate" value="19 Sep">
+                    Description: <input class="form-control" type="text" name="description" value="Good Product"
+                        placeholder="Enter Description">
+                    Price: <input class="form-control" type="text" name="price" placeholder="Enter Price">
+                    Rating: <input class="form-control" type="text" name="startRating" placeholder="Enter Rating">
+                    Image Url: <input class="form-control" type="text" name="imageUrl" value="http://www.google.com"
+                        placeholder="Enter Image Url">
+                    <input type="submit" class="btn btn-primary mt-2" value="Update">
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

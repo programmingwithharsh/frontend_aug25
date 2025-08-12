@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.js"></script>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Category Name</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Apple</td>
+                    <td><a href="./EditCategory.html">Edit</a>|<a data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            href="#">Delete</a></td>
+                </tr>
+                <tr>
+                    <td>Samsung</td>
+                    <td><a href="./EditCategory.html">Edit</a>|<a data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            href="#">Delete</a></td>
+                </tr>
+                <tr>
+                    <td>Nokia</td>
+                    <td><a href="./EditCategory.html">Edit</a>|<a data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            href="#">Delete</a></td>
+                </tr>
+                <tr>
+                    <td>Micromax</td>
+                    <td><a href="./EditCategory.html">Edit</a>|<a data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            href="#">Delete</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a class="btn btn-primary" href="./AddCategory.html">Add Category</a>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Do you really want to delete Category?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

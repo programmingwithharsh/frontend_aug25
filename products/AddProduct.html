@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.css" rel="stylesheet">
+    <script src="./script.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xxl-6 mt-4">
+                <h1>Add Product</h1>
+                <form action="./ProductList.html" method="get" onsubmit="return addProduct()">
+                    Product Name: <input class="form-control" type="text" id="productName" name="productName"
+                        placeholder="Enter Product Name">
+                    Product Code: <input class="form-control" type="text" id="productCode" name="productCode"
+                        placeholder="Enter Product Code">
+                    Date: <input class="form-control" type="date" id="releaseDate" name="releaseDate">
+                    Description: <input class="form-control" type="text" id="description" name="description"
+                        placeholder="Enter Description">
+                    Price: <input class="form-control" type="text" id="price" name="price" placeholder="Enter Price">
+                    Rating: <input class="form-control" type="text" id="startRating" name="startRating"
+                        placeholder="Enter Rating">
+                    Image Url: <input class="form-control" type="text" id="imageUrl" name="imageUrl"
+                        placeholder="Enter Image Url">
+                    <input type="submit" class="btn btn-primary mt-2" value="Add">
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
