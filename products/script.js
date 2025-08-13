@@ -22,7 +22,11 @@ const loadProducts = () => {
         .then((data) => {
             products = data; // assign response data to products array
             displayProducts();
-        });
+        })
+        .catch(error => {
+            console.log(`Error loading products`, error);
+            alert(`Failed to load products`);
+        })
 }
 
 /*
@@ -37,7 +41,10 @@ const deleteProduct = () => {
         .then(() => {
             alert(`Product Deleted Successfully`);
             window.location.href = "./ProductList.html"; // redirect to products page
-        });
+        }).catch(error => {
+            console.log(`Error deleting product`, error);
+            alert(`Failed to delete product`);
+        })
 }
 
 const storeDeleteId = (id) => {
@@ -58,7 +65,11 @@ const filterProductById = (id) => {
             document.getElementById("price").value = product.price;
             document.getElementById("starRating").value = product.starRating;
             document.getElementById("imageUrl").value = product.imageUrl;
-        });
+        })
+        .catch(error => {
+            console.log(`Error loading product`, error);
+            alert(`Failed to load product`);
+        })
 }
 
 // PUT API Call, http://localhost:4000/api/products
@@ -91,7 +102,11 @@ const updateProduct = () => {
         .then(() => {
             alert(`Product Updated Successfully`);
             window.location.href = "./ProductList.html"; // redirect to products page
-        });
+        })
+        .catch(error => {
+            console.log(`Error updating product`, error);
+            alert(`Failed to update product`);
+        })
     return false;
 }
 
@@ -140,7 +155,10 @@ const addProductInDb = (product) => {
         .then(() => {
             alert(`Product Created Successfully`);
             window.location.href = "./ProductList.html"; // redirect to products page
-        });
+        }).catch(error => {
+            console.log(`Error creating product`, error);
+            alert(`Failed to create product`);
+        })
 }
 
 // Display Products in the table
