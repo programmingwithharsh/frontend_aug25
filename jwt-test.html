@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-xxl-4">
+                <h2>Login</h2>
+                <div> username <input type="text" class="form-control" name="username" id="username"
+                        placeholder="admin or user"></div>
+                <div> password <input type="password" class="form-control" name="password" id="password"
+                        placeholder="admin123 or user123"></div>
+                <div class="mt-2">
+                    <button class="btn btn-primary" onclick="login()">Login</button>
+                    <button class="btn btn-primary" onclick="logout()">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <h2>Token Info</h2>
+        <div id="tokenInfo">Not loggedin</div>
+    </div>
+
+    <div class="container mt-4">
+        <h2>Test Protected Routes</h2>
+        <button class="btn btn-primary" onclick="testProtected()">Test Protected Route</button>
+        <button class="btn btn-primary" onclick="testAdmin()">Test Admin Route</button>
+        <button class="btn btn-primary" onclick="verifyToken()">Verify Token</button>
+    </div>
+
+    <div class="container mt-4">
+        <h2>Response</h2>
+        <div id="response"></div>
+    </div>
+
+    <script>
+        let API_BASE_URL = "http://localhost:3000/api";
+
+        let currentToken = localStorage.getItem("token"); // get item from localstorage
+
+        if (currentToken) {
+            updateTokenInfo();
+        }
+
+        function login() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            fetch(`${API_BASE_URL}/login`, {
+                method: 'POST',
+                body: JSON.stringify({ username, password }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    localStorage.setItem("token", data.token); // set item in local storage
+                    currentToken = localStorage.getItem("token"); // get item from localstorage
+                    updateTokenInfo();
+                });
+        }
+
+        function updateTokenInfo() {
+            const tokenInfo = document.getElementById("tokenInfo");
+
+            if (currentToken) {
+                tokenInfo.innerHTML = currentToken;
+            } else {
+                tokenInfo.textContent = "Not Logged In";
+            }
+        }
+
+        function logout() {
+            currentToken = null;
+            localStorage.removeItem("token"); // removing token from local storage
+            updateTokenInfo();
+        }
+
+        function testProtected() {
+            fetch(`${API_BASE_URL}/protected`, {
+                headers: {
+                    'Authorization': `Bearer ${currentToken}`
+                }
+            })
+                .then((response) => response.json())
+                .then((json) => {
+                    showResponse(json);
+                });
+        }
+
+        function testAdmin() {
+            fetch(`${API_BASE_URL}/admin`, {
+                headers: {
+                    'Authorization': `Bearer ${currentToken}`
+                }
+            })
+                .then((response) => response.json())
+                .then((json) => {
+                    showResponse(json);
+                });
+        }
+
+        function verifyToken() {
+            fetch(`${API_BASE_URL}/verify`,
+                {
+                    headers: {
+                        'Authorization': `Bearer ${currentToken}`
+                    }
+                }
+            )
+                .then((response) => response.json())
+                .then((json) => {
+                    showResponse(json);
+                });
+        }
+
+        function showResponse(data) {
+            const response = document.getElementById("response");
+            response.innerHTML = JSON.stringify(data);
+        }
+    </script>
+</body>
+
+</html>
